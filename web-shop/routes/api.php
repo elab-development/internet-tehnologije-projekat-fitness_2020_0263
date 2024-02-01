@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\WSApi\AuthController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WSApi\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +28,10 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 Route::get('/customers', [CustomerController::class, 'index']);
 Route::get('/customers/p', [CustomerController::class, 'indexP']);
 Route::get('/customers/{id}', [CustomerController::class, 'show']);
+
+Route::get('/orders', [OrderController::class, 'index']);
+Route::get('/orders/p', [OrderController::class, 'indexP']);
+Route::get('/orders/{id}', [OrderController::class, 'show']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
