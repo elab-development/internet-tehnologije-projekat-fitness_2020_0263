@@ -14,13 +14,13 @@ const Footer = () => (
       <img src={Logo} alt='logo' style={{ width: '200px', height: '41px' }} />
     </Stack>
     <Typography
-      variant='h5'
+      variant='h6'
       sx={{ fontSize: { lg: '28px', xs: '20px' } }}
       mt='41px'
       textAlign='center'
       pb='40px'
     >
-      Made with ❤️ by ANS
+      PUSH BEYOND LIMITS
     </Typography>
   </Box>
 );
