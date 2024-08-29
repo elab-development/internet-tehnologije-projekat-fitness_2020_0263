@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import AddExercise from './pages/AddExercise';
 import Plan from './pages/Plan';
+import Review from './pages/Review';
 
 function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
@@ -38,6 +39,7 @@ function App() {
           element={isAuth ? <Navigate to='/' /> : <Login />}
         />
         <Route path='/exercise/:id' element={<ExerciseDetail />} />
+        <Route path='/reviews' element={<Review />} />
       </Routes>
       <Footer />
     </Box>
