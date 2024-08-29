@@ -88,6 +88,16 @@ const Navbar = () => {
             Login
           </Link>
         )}
+         <Link
+          to='/reviews'
+          style={{
+            textDecoration: 'none',
+            color: '#3a1212',
+            borderBottom: '3px solid #ff2625',
+          }}
+        >
+          Reviews
+        </Link>
       </Stack>
     </Stack>
   );
