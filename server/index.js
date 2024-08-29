@@ -6,6 +6,7 @@ import cors from 'cors';
 import authRoutes from './routes/auth.js';
 import exerciseRoutes from './routes/exercise.js';
 import plansRoutes from './routes/plans.js';
+import reviewRoutes from './routes/review.js';
 
 dotenv.config();
 const app = express();
@@ -21,6 +22,7 @@ app.use(cors());
 app.use('/auth', authRoutes);
 app.use('/exercises', exerciseRoutes);
 app.use('/plans', plansRoutes);
+app.use('/reviews', reviewRoutes);
 
 const PORT = process.env.PORT || 6001;
 mongoose
