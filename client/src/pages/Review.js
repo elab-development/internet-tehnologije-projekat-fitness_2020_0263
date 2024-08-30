@@ -36,53 +36,7 @@ const Review = () => {
       }
     };*/
   
-/*
-  return (
-    
-    <Formik > 
-       {() => (
-       <form  style={{ marginTop: '20px' }}>
-     <Typography>Reviews</Typography>
-      <Box>
-        {reviews.length > 0 ? (
-          reviews.map((review) => (
-            <Box key={review._id} style={{ border: '1px solid #ddd', padding: '10px', margin: '10px 0' }}>
-              <p>{review.desc}</p>
-              <small>User: {review.userId}</small>
-            </Box>
-          ))
-        ) : (
-          <p>No reviews available</p>
-        )}
-      </Box>
-      
-      //<form  style={{ marginTop: '20px' }}>
-      <TextField
-                label='Review'
-               // onBlur={handleBlur}
-             //   onChange={handleChange}
-               // value={values.firstName}
-                name='review'
-              //  error={Boolean(touched.firstName) && Boolean(errors.firstName)}
-              //  helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: 'span 2' }}
-              />
-       <Button
-    fullWidth
-    type='submit'
-    sx={{
-      m: '2rem 0',
-      p: '1rem',
-      color: 'black',
-    }}
-  >
-    {'SUBMIT REVIEW'}
-  </Button>
-      </form> 
-      )}
-      </Formik>
-  );
-  */
+
   return (
     <Formik
      // onSubmit={handleFormSubmit}
@@ -92,6 +46,9 @@ const Review = () => {
       {({ values, errors, touched, handleBlur, handleChange, handleSubmit, resetForm }) => (
       
         <form >
+           <Typography fontWeight='500' variant='h5' sx={{ mb: '1.5rem' }}>
+          Reviews
+        </Typography>
             <Box>
         {reviews.length > 0 ? (
           reviews.map((review) => (
@@ -104,9 +61,7 @@ const Review = () => {
           <p>No reviews available</p>
         )}
       </Box>
-            <Typography fontWeight='500' variant='h5' sx={{ mb: '1.5rem' }}>
-          Reviews
-        </Typography>
+           
           <Box
             display='grid'
             gap='30px'
