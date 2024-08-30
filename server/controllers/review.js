@@ -2,20 +2,23 @@ import Review from '../models/Review.js';
 
 export const getReviews = async (req, res) => {
     try {
-      const reviews = await Review.find();
+      const reviews = await Review.find().populate('userId', 'email');
       res.status(200).json(reviews);
     } catch (err) {
       res.status(404).json({ message: err.message });
     }
   };
 
+
+
 export const createReview = async (req, res) => {
   try {
-    const { desc,userId} = req.body;
+    const { desc,userId,email} = req.body;
 
     const newReview = new Review({
        desc,
       userId,
+      
     });
     await newReview.save();
 

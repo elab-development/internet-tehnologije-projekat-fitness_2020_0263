@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 
 const Review = () => {
   const [reviews, setReviews] = useState([]);
+  const [user, setUser] = useState([]);
   const [newReview, setNewReview] = useState('');
 
   useEffect(() => {
@@ -13,6 +14,7 @@ const Review = () => {
       });
       const reviews1 = await reviews.json();
       setReviews(reviews1);
+      
     };
 
     getReviews();
@@ -95,7 +97,7 @@ const Review = () => {
           reviews.map((review) => (
             <Box key={review._id} style={{ border: '1px solid #ddd', padding: '10px', margin: '10px 0' }}>
               <p>{review.desc}</p>
-              <small>User: {review.userId}</small>
+              <small>User: {review.userId.email}</small>
             </Box>
           ))
         ) : (

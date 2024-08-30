@@ -7,11 +7,12 @@ const ReviewSchema = new mongoose.Schema(
        required: true,
     },
     userId: {
-        type: String,
+       // type: String,
        required: true,
-     //  type: mongoose.Schema.Types.ObjectId, // Ispravka: ObjectId umesto String
+       type: mongoose.Schema.Types.ObjectId, // Ispravka: ObjectId umesto String
        ref: 'User', // Referenca na model User
       },
+      
   },
   {
     timestamps: true,
