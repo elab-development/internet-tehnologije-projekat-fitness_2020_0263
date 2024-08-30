@@ -13,7 +13,7 @@ export const getReviews = async (req, res) => {
 
 export const createReview = async (req, res) => {
   try {
-    const { desc,userId,email} = req.body;
+    const { desc,userId} = req.body;
 
     const newReview = new Review({
        desc,

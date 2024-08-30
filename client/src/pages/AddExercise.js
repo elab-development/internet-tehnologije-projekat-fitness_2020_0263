@@ -31,6 +31,7 @@ const AddExercise = () => {
 
     if (exercise) {
       onSubmitProps.resetForm();
+      navigate('/');  //dodato
     }
   };
 
@@ -102,7 +103,7 @@ const AddExercise = () => {
                 p: '1rem',
                 color: 'black',
               }}
-              onClick={() => navigate('/')}
+            //  onClick={() => navigate('/')}
             >
               Add an instruction for exercise
               

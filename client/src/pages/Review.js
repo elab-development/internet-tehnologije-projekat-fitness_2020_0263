@@ -1,35 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { Formik } from 'formik';
-import { useNavigate } from 'react-router-dom'; // Dodaj ovu liniju
 import Reviews from '../components/Reviews';
+import { useSelector } from 'react-redux';
 
 
 const Review = () => {
+  const isAdmin = Boolean(useSelector((state) => state.user?.admin));
+  const user = useSelector((state) => state.user);
   const [initialValues, setInitialValues] = useState({
     desc: '',
-    userId: '',
+    userId: user._id,
   });
+  
+  console.log(initialValues);
 
-  //const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [userId, setUserId] = useState(null); 
 
-  useEffect(() => {
-  
-    const getUser = async () => {
-      const response = await fetch('http://localhost:3001/reviews', {
-        method: 'GET',
-      });
-      const user = await response.json();
-      setUserId(user._id); // Assuming the user object has an _id field
-      setInitialValues((prevValues) => ({
-        ...prevValues,
-        userId: user._id,
-      }));
-    };
+  const fetchReviews = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/reviews');
+      const data = await response.json();
+      setReviews(data);  // Set the fetched reviews
+    } catch (error) {
+      console.error('Failed to fetch reviews:', error);
+    }
+  };
 
-    getUser();
+  // Fetch reviews on component mount
+  useEffect(() => {
+    fetchReviews();
   }, []);
+
 
   const handleFormSubmit = async (values,  onSubmitProps) => {
     try {
@@ -38,9 +41,15 @@ const Review = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),
       });
+      console.log(values);
       const savedReview = await response.json();
      // setReviews((prevReviews) => [...prevReviews, savedReview]); // Dodaj novu recenziju
      onSubmitProps.resetForm();
+
+     if (savedReview) {
+      //onSubmitProps.resetForm();
+      fetchReviews();
+    }
     } catch (error) {
       console.error('Failed to submit review:', error);
     }
@@ -56,7 +65,8 @@ const Review = () => {
       {({ values, handleChange, handleSubmit, handleBlur }) => (
         
         <form onSubmit={handleSubmit}>
-          <Box> <Reviews></Reviews> </Box>
+          <Box> <Reviews reviews={reviews}></Reviews> </Box>
+          
           <Box
             display='grid'
             gap='30px'
@@ -65,6 +75,8 @@ const Review = () => {
               '& > div': { gridColumn: 'span 4' },
             }}
           >
+            {!isAdmin && (
+              <>
             <TextField
               label='Your review'
               name='desc'
@@ -73,8 +85,12 @@ const Review = () => {
               onBlur={handleBlur}
               sx={{ gridColumn: 'span 4' }}
             />
+             </>
+            )}
           </Box>
+
           <Box>
+          {!isAdmin && (
             <Button
               fullWidth
               type='submit'
@@ -86,7 +102,9 @@ const Review = () => {
             >
               {'SUBMIT REVIEW'}
             </Button>
+          )}
           </Box>
+         
         </form>
       )}
     </Formik>

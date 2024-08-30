@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { useSelector } from 'react-redux';
@@ -16,6 +16,7 @@ import Review from './pages/Review';
 function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
   const isAdmin = Boolean(useSelector((state) => state.user?.admin));
+  const [user, setUser] = useState([]);
 
   return (
     <Box width='400px' sx={{ width: { xl: '1488px' } }} m='auto'>
