@@ -9,6 +9,8 @@ const ReviewSchema = new mongoose.Schema(
     userId: {
         type: String,
        required: true,
+     //  type: mongoose.Schema.Types.ObjectId, // Ispravka: ObjectId umesto String
+       ref: 'User', // Referenca na model User
       },
   },
   {
