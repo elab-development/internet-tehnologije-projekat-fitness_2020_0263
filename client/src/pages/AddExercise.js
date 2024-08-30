@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-
+ 
 
 const exerciseSchema = yup.object().shape({
   rapidApiId: yup.string().required('required'),
