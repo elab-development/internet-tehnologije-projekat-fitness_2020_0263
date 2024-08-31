@@ -86,6 +86,7 @@ const AuthForm = () => {
 
     const loggedIn = await loggedInUserResponse.json();
 
+
     if (loggedIn) {
       dispatch(
         setLogin({
@@ -93,6 +94,7 @@ const AuthForm = () => {
           token: loggedIn.token,
         })
       );
+      console.log(loggedIn.user._id);
       navigate('/');
     }
   };
@@ -118,6 +120,7 @@ const resetPassword = async (values, onSubmitProps) => {
     if (isLogin) await login(values, onSubmitProps);
     if (isRegister) await register(values, onSubmitProps);
     if (isResetPassword) await resetPassword(values, onSubmitProps);
+    
   };
 
 

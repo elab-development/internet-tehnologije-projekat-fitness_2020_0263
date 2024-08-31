@@ -3,9 +3,9 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
-const Reviews = () => {
+const Reviews = ({reviews}) => {
 
-    const [reviews, setReviews] = useState([]);
+    const [ setReviews] = useState([]);
 useEffect(() => {
     const getReviews = async () => {
       try {

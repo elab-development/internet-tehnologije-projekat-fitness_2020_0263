@@ -23,10 +23,10 @@ export const getExerciseByRapid = async (req, res) => {
  
 export const createExerciseWithoutRapid = async (req, res) => {
   try {
-    const { name, description } = req.body;
+    const { set, description } = req.body;
  
     const newExercise = new Exercise({
-      name,
+      set,
       description,
     });
     await newExercise.save();
@@ -40,11 +40,11 @@ export const createExerciseWithoutRapid = async (req, res) => {
  
 export const createExerciseWithRapid = async (req, res) => {
   try {
-    const { rapidApiId, name, description } = req.body;
+    const { rapidApiId, set, description } = req.body;
  
     const newExercise = new Exercise({
       rapidId: rapidApiId,
-      name,
+      set,
       description,
     });
     await newExercise.save();
