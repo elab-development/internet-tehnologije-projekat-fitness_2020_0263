@@ -75,7 +75,7 @@ useEffect(() => {
   };
 
   getPlan();
-}, [id, user?._id]); // Added user?._id as a dependency
+}, [id, user?._id]); 
 
   return (
     <Stack

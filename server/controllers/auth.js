@@ -64,15 +64,14 @@ export const resetPassword = async (req, res) => {
   try {
     const { email, newPassword } = req.body;
 
-    // Find the user by email
     const user = await User.findOne({ email: email });
     if (!user) return res.status(400).json({ msg: 'User does not exist' });
 
-    // Hash the new password
+   
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(newPassword, salt);
 
-    // Update the user's password in the database
+    
     user.password = hashedPassword;
     await user.save();
 

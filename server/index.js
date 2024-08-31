@@ -18,7 +18,7 @@ app.use(
   })
 );
 app.use(cors());
-
+//Cross-Origin Resource Sharing
 app.use('/auth', authRoutes);
 app.use('/exercises', exerciseRoutes);
 app.use('/plans', plansRoutes);
